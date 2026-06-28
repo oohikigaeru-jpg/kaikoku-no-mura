@@ -1,0 +1,212 @@
+/* ==========================================
+   🎮 1/2：style.css 全画面・共通基本デザイン（明朝体＆演出完全復活版）
+   ========================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh !important; 
+    background-color: #000000 !important; 
+    /* 🔮 因習村パートに最高の恐怖と臨場感をもたらす「明朝体」フォントを完全固定 */
+    font-family: "Georgia", "Times New Roman", "Yu Mincho", "游明朝", "MS Mincho", "ＭＳ 明朝", serif !important;
+    color: #ffffff;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 📱 ゲームの全画面コンテナ：【演出復活の大修正】 */
+#game-container {
+    position: relative;
+    width: 100vw !important;
+    height: 100dvh !important; 
+    margin: 0 auto;
+    /* 💡 アニメーションの赤色が透けて見えるよう、コンテナの背景色の優先度を調整 */
+    background-color: #050000;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 🚨 【演出完全大復活】4章サイバー用の赤点滅アラーム背景アニメーション */
+.alarm-bg {
+    animation: cyberAlarm 1.8s infinite alternate !important;
+}
+@keyframes cyberAlarm {
+    0% { background-color: #050000 !important; }
+    100% { background-color: #2b0202 !important; }
+}
+
+/* 📄 小説 本文テキストエリア（明朝体・全画面タップ・3択被り物理破壊） */
+#text-overlay {
+    position: absolute;
+    /* 💡 配置のスタート位置を、システムバー（45px）のすぐ真下にピタッと密着 */
+    top: 45px !important; 
+    left: 0 !important;
+    
+    /* 🎨 箱のサイズ自体は画面全体に強制固定！これでどこを触っても100%確実に早送りタップが爆速反応します */
+    width: 100vw !important;
+    height: calc(100dvh - 45px) !important; 
+    box-sizing: border-box;
+    
+    /* 🎨 下部の内側余白（padding-bottom）を「260px」という圧倒的な広さで強制確保！
+       これにより、3択のボタンがどれだけ上に広がっても、文字がボタンの下に潜り込むことが物理的に不可能になります */
+    padding: 20px 25px 260px 25px !important; 
+    
+    font-size: 1.05rem;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    white-space: pre-wrap;
+    
+    /* 制限をすべて解除し、液晶の全域を使って自由自在にどこまでもスクロールできるようにします */
+    max-height: none !important; 
+    overflow-y: auto !important; 
+    z-index: 5;
+
+    /* 🎨 グラデーションの位置を文字が表示される実可動域の底面（ボタンの手前）に美しく最適化 */
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 85%) !important;
+    mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 85%) !important;
+}
+/* 🛸 4章サイバー用の電脳青ネオンテキスト */
+.cyber-text {
+    color: #38bdf8 !important;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.6) !important;
+    font-family: monospace !important;
+}
+
+/* 💾 画面最上部の「システムバー（セーブ・ロードバー）」を完全固定 */
+.system-bar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 45px !important;
+    background: rgba(5, 5, 5, 0.95) !important;
+    border-bottom: 1px solid #1e293b !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    z-index: 100 !important;
+}
+
+.system-bar button {
+    background: rgba(0, 15, 30, 0.8) !important;
+    color: #38bdf8 !important;
+    border: 1px solid #38bdf8 !important;
+    padding: 4px 12px !important;
+    font-size: 0.75rem !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+}
+
+/* 🎛️ 選択肢ボタンを包むエリア（画面最下部に完全密着固定！） */
+#choices-container {
+    position: absolute !important;  
+    bottom: 40px !important;        
+    left: 50% !important;           
+    transform: translateX(-50%) !important; 
+    width: 100% !important;         
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;    
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    padding: 10px 0 !important; 
+    z-index: 50 !important;         
+    background: transparent !important; 
+    pointer-events: none !important; 
+}
+
+/* 🔘 本編進行用の選択肢ボタン */
+.choice-button {
+    width: 85% !important;         
+    font-size: 0.95rem !important; 
+    padding: 14px !important;      
+    background: rgba(15, 15, 15, 0.95) !important; 
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    border-radius: 6px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6) !important;
+    pointer-events: auto !important; 
+}
+
+/* 🎪 タイトル画面全体（自動整列を完全に廃止し、見た目とタップ判定を完全合流させる無敵の絶対配置） */
+#title-screen {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    background-color: #050000 !important;
+    z-index: 50 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* 📛 通常の「怪哭の村」タイトルロゴ（上から32%の位置に物理固定・美しい明朝体） */
+#title-logo {
+    position: absolute !important;
+    top: 32% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    width: 100% !important;
+    font-family: "Georgia", "Times New Roman", "Yu Mincho", "游明朝", "MS Mincho", "ＭＳ 明朝", serif !important;
+    font-size: 2.6rem !important;
+    font-weight: bold !important;
+    color: #e11d48 !important; 
+    text-shadow: 0 0 12px rgba(0,0,0,0.9) !important;
+    text-align: center !important;
+}
+
+/* 🛸 クリア後のサイバーロゴ形態 */
+.cyber-logo {
+    position: absolute !important;
+    top: 32% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    font-size: 1.6rem !important;
+    letter-spacing: 2px !important;
+    color: #38bdf8 !important;
+    text-align: center !important;
+}
+
+/* 🏆 実績カウント：白文字メーター（上から46%の位置に物理固定） */
+#collection-rate {
+    position: absolute !important;
+    top: 46% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    width: 100% !important;
+    visibility: visible !important;
+    color: #ffffff !important; 
+    font-size: 0.95rem !important;
+    text-align: center !important;
+    font-family: sans-serif !important;
+    z-index: 999 !important;
+    opacity: 1 !important;
+}
+
+/* 🔘 「最初から」ボタン（上から62%の位置に物理固定：見た目の絵とタップ判定を200%完全一致！） */
+.start-button {
+    position: absolute !important;
+    top: 62% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    width: auto !important;
+    min-width: 160px !important; 
+    padding: 14px 45px !important; 
+    font-size: 1.05rem !important;
+    /* 🔮 ボタンの文字も、小説本文と同じくおぞましくも美しい「明朝体」へ完全統一 */
+    font-family: "Georgia", "Times New Roman", "Yu Mincho", "游明朝", "MS Mincho", "ＭＳ 明朝", serif !important;
+    background: rgba(0, 0, 0, 0.9) !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6) !important;
+    z-index: 1000 !important; /* 最前面に配置して確実に最優先でタップ可能に */
+}

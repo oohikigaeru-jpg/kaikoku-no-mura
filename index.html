@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>怪哭の村</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 💾 画面上部のシステムメニュー（セーブ・ロードバー） -->
+        <div id="system-menu" class="system-bar" style="display:none;">
+            <button onclick="if(window.game) window.game.saveGame(1)">セーブ1</button>
+            <button onclick="if(window.game) window.game.saveGame(2)">セーブ2</button>
+            <button onclick="if(window.game) window.game.loadGame(1)">ロード1</button>
+            <button onclick="if(window.game) window.game.loadGame(2)">ロード2</button>
+        </div>
+
+        <!-- 🔴 タイトル画面エリア -->
+        <div id="title-screen">
+            <div id="title-logo">怪哭の村</div>
+            <!-- 🏆 全16エンドの実績を完璧に上書きするための正しい箱 -->
+            <div id="collection-rate">Ending Collection: 0 / 16 (0%)</div>
+            <button class="start-button" id="start-btn">最初から</button>
+        </div>
+        
+        <!-- 🔵 ゲーム本編エリア -->
+        <div id="text-overlay" style="display: none;"></div>
+        <div id="choices-container"></div>
+    </div>
+
+    <!-- 📜 スクリプトの読み込み（安全のため最下部に配置） -->
+    <script src="script.js"></script>
+</body>
+</html>
