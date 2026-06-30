@@ -154,22 +154,22 @@ html, body {
     100% { opacity: 0.95; transform: translate(-50%, 4px); } /* 💡 下へ向かってフワッと動く */
 }
 
-/* 🎪 タイトル画面全体（自動整列を完全に廃止し、見た目とタップ判定を完全合流させる無敵の絶対配置） */
+/* 🎪 タイトル画面全体（見た目とタップ判定を200%完全一致させる無敵の絶対配置） */
 #title-screen {
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100dvh !important;
-    background-color: #050000; /* 通常時の背景色 */
+    background-color: #050000;
     z-index: 50 !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
 }
 
-/* 📛 通常の「怪哭の村」タイトルロゴ（上から32%の位置に物理固定・美しい明朝体）
-   💡 【大修正】プログラムの挙動と100%連動！親要素（#game-container）が宇宙（.space-bg）じゃない通常時だけの条件へ変更 */
-#game-container:not(.space-bg) #title-logo {
+/* 📛 通常・因習村・近代因縁・通常バッド時のタイトルロゴ（上から32%の位置に物理固定）
+   💡 親要素が「宇宙（.space-bg）」でも「SFバッド（.alarm-bg）」でもない通常時だけの条件 */
+#game-container:not(.space-bg):not(.alarm-bg) #title-logo {
     position: absolute !important;
     top: 32% !important;
     left: 50% !important;
@@ -183,18 +183,34 @@ html, body {
     text-align: center !important;
 }
 
-/* 🛸 【新設】SFクリア時専用：親要素（#game-container）が宇宙（.space-bg）に反転した時限定のサイバー青ネオンロゴ！ */
+/* 🛸 【大修正】SFトゥルー＆SFノーマル共通：親要素が宇宙（.space-bg）に反転した時限定のサイバー等幅ロゴ！
+   💡 【干渉完全破壊】!importantによるカラー固定を完全に廃止し、JS側から送られてくる青（#38bdf8）や緑（#10b981）のカラー指定を100%素直に透過して発色させる無敵の透過設計へ！ */
 #game-container.space-bg #title-logo {
     position: absolute !important;
     top: 32% !important;
     left: 50% !important;
     transform: translateX(-50%) !important; 
     width: 100% !important;
-    font-size: 1.7rem !important;
+    font-size: 1.6rem !important;
     letter-spacing: 2px !important;
-    color: #38bdf8 !important; /* 💡 SFクリア後は、赤を完全に引き剥がして、鮮烈なサイバーネオンブルー（青）へ！ */
-    text-shadow: 0 0 8px rgba(56, 189, 248, 0.6) !important;
-    font-family: monospace !important; /* 💡 フォントも明朝体を廃止し、かっこいい電脳等幅フォントへ強制反転！ */
+    /* colorのガチガチ固定を完全に削除しました！ */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
+    font-family: monospace !important; /* 💡 かっこいい電脳等幅フォントへ！ */
+    text-align: center !important;
+}
+
+/* 💥 SFバッド専用：親要素が赤点滅アラーム（.alarm-bg）に変貌した時限定の警告デジタルレッドロゴ！ */
+#game-container.alarm-bg #title-logo {
+    position: absolute !important;
+    top: 32% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    width: 100% !important;
+    font-size: 1.4rem !important; 
+    letter-spacing: 1px !important;
+    color: #ef4444 !important; /* 💡 警告のデジタルレッド（赤） */
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.6) !important;
+    font-family: monospace !important; 
     text-align: center !important;
 }
 
@@ -214,8 +230,8 @@ html, body {
     opacity: 1 !important;
 }
 
-/* 🔘 通常の「最初から」ボタン（上から62%の位置に物理固定：見た目の絵とタップ判定を200%完全一致！） */
-#game-container:not(.space-bg) .start-button {
+/* 🔘 通常の「最初から」ボタン（親要素がSFサイバー関連じゃない通常時限定） */
+#game-container:not(.space-bg):not(.alarm-bg) .start-button {
     position: absolute !important;
     top: 62% !important;
     left: 50% !important;
@@ -234,7 +250,8 @@ html, body {
     z-index: 1000 !important; 
 }
 
-/* 🛸 【新設】SFクリア時専用：宇宙反転時（.space-bg）のサイバー青ネオンリセットボタン！ */
+/* 🛸 【大修正】SFトゥルー＆SFノーマル共通：宇宙反転時（.space-bg）のサイバーネオンボタン！
+   💡 【干渉完全破壊】ボタンもカラー固定を完全解除し、JS側から送られてくる青ネオンと緑ネオンの枠線・文字色を100%完璧にそのまま素直に反映させる可変仕様へ変貌！ */
 #game-container.space-bg .start-button {
     position: absolute !important;
     top: 62% !important;
@@ -244,12 +261,29 @@ html, body {
     min-width: 160px !important; 
     padding: 14px 45px !important; 
     font-size: 1.05rem !important;
-    font-family: monospace !important; /* 💡 ボタンの文字もかっこいい等幅サイバーフォントへ！ */
-    background: rgba(0, 20, 40, 0.8) !important; /* 💡 電脳ブルーに合うサイバーな半透明ネイビー */
-    color: #38bdf8 !important; /* 💡 文字もクッキリ輝くサイバーブルー（青） */
-    border: 1px solid #38bdf8 !important; /* 💡 枠線も美しいブルー */
+    font-family: monospace !important; /* 💡 ボタンの文字も等幅サイバーフォントへ！ */
+    /* background、color、borderの固定指定を完全撤去しました！ */
     border-radius: 4px !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2) !important;
+    z-index: 1000 !important; 
+}
+
+/* 💥 SFバッド専用：赤点滅アラーム時（.alarm-bg）の電脳エラー再起動ボタン！ */
+#game-container.alarm-bg .start-button {
+    position: absolute !important;
+    top: 62% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; 
+    width: auto !important;
+    min-width: 160px !important; 
+    padding: 14px 45px !important; 
+    font-size: 1.05rem !important;
+    font-family: monospace !important; 
+    background: rgba(40, 0, 0, 0.8) !important; 
+    color: #ef4444 !important; 
+    border: 1px solid #ef4444 !important; 
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2) !important;
     z-index: 1000 !important; 
 }
