@@ -167,8 +167,7 @@ html, body {
     box-sizing: border-box !important;
 }
 
-/* 📛 通常・因習村・近代因縁・通常バッド時のタイトルロゴ（上から32%の位置に物理固定）
-   💡 親要素が「宇宙（.space-bg）」でも「SFバッド（.alarm-bg）」でもない通常時だけの条件 */
+/* 📛 通常・因婚村・近代因縁・通常バッド時のタイトルロゴ（上から32%の位置に物理固定） */
 #game-container:not(.space-bg):not(.alarm-bg) #title-logo {
     position: absolute !important;
     top: 32% !important;
@@ -178,13 +177,12 @@ html, body {
     font-family: "Georgia", "Times New Roman", "Yu Mincho", "游明朝", "MS Mincho", "ＭＳ 明朝", serif !important;
     font-size: 2.6rem !important;
     font-weight: bold !important;
-    color: #e11d48 !important; /* 💡 通常時は美しい深紅（赤） */
+    color: #e11d48 !important;
     text-shadow: 0 0 12px rgba(0,0,0,0.9) !important;
     text-align: center !important;
 }
 
-/* 🛸 【大修正】SFトゥルー＆SFノーマル共通：親要素が宇宙（.space-bg）に反転した時限定のサイバー等幅ロゴ！
-   💡 【干渉完全破壊】!importantによるカラー固定を完全に廃止し、JS側から送られてくる青（#38bdf8）や緑（#10b981）のカラー指定を100%素直に透過して発色させる無敵の透過設計へ！ */
+/* 🛸 SFトゥルー＆SFノーマル共通：親要素が宇宙（.space-bg）に反転した時限定の等幅ロゴ */
 #game-container.space-bg #title-logo {
     position: absolute !important;
     top: 32% !important;
@@ -193,13 +191,12 @@ html, body {
     width: 100% !important;
     font-size: 1.6rem !important;
     letter-spacing: 2px !important;
-    /* colorのガチガチ固定を完全に削除しました！ */
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.4) !important;
-    font-family: monospace !important; /* 💡 かっこいい電脳等幅フォントへ！ */
+    font-family: monospace !important;
     text-align: center !important;
 }
 
-/* 💥 SFバッド専用：親要素が赤点滅アラーム（.alarm-bg）に変貌した時限定の警告デジタルレッドロゴ！ */
+/* 💥 SFバッド専用：親要素が赤点滅アラーム（.alarm-bg）に変貌した時限定の警告ロゴ */
 #game-container.alarm-bg #title-logo {
     position: absolute !important;
     top: 32% !important;
@@ -208,7 +205,7 @@ html, body {
     width: 100% !important;
     font-size: 1.4rem !important; 
     letter-spacing: 1px !important;
-    color: #ef4444 !important; /* 💡 警告のデジタルレッド（赤） */
+    color: #ef4444 !important;
     text-shadow: 0 0 8px rgba(239, 68, 68, 0.6) !important;
     font-family: monospace !important; 
     text-align: center !important;
@@ -230,8 +227,9 @@ html, body {
     opacity: 1 !important;
 }
 
-/* 🔘 通常の「最初から」ボタン（親要素がSFサイバー関連じゃない通常時限定） */
-#game-container:not(.space-bg):not(.alarm-bg) .start-button {
+/* 🔘 【大修正】「最初から」ボタンのベース絶対配置（クラス名・ID名に関わらず、上から62%の位置に完全超ロック！）
+   💡 これにより、JS側からどんなクラス名（cyber-start-btnなど）に変形させられても、タップ判定の箱が1ミリもズレなくなります！ */
+#start-btn, .start-button {
     position: absolute !important;
     top: 62% !important;
     left: 50% !important;
@@ -240,50 +238,37 @@ html, body {
     min-width: 160px !important; 
     padding: 14px 45px !important; 
     font-size: 1.05rem !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    z-index: 1000 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* 🎨 世界線①：通常時（SFでもアラームでもない時）の和風明朝体ボタンデザイン */
+#game-container:not(.space-bg):not(.alarm-bg) #start-btn,
+#game-container:not(.space-bg):not(.alarm-bg) .start-button {
     font-family: "Georgia", "Times New Roman", "Yu Mincho", "游明朝", "MS Mincho", "ＭＳ 明朝", serif !important;
     background: rgba(0, 0, 0, 0.9) !important;
     color: #ffffff !important;
     border: 2px solid #ffffff !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
     box-shadow: 0 4px 12px rgba(0,0,0,0.6) !important;
-    z-index: 1000 !important; 
 }
 
-/* 🛸 【大修正】SFトゥルー＆SFノーマル共通：宇宙反転時（.space-bg）のサイバーネオンボタン！
-   💡 【干渉完全破壊】ボタンもカラー固定を完全解除し、JS側から送られてくる青ネオンと緑ネオンの枠線・文字色を100%完璧にそのまま素直に反映させる可変仕様へ変貌！ */
+/* 🛸 世界線②：SF宇宙時（.space-bg）のサイバー等幅ボタンデザイン（青・緑ネオンをそのまま透過） */
+#game-container.space-bg #start-btn,
 #game-container.space-bg .start-button {
-    position: absolute !important;
-    top: 62% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important; 
-    width: auto !important;
-    min-width: 160px !important; 
-    padding: 14px 45px !important; 
-    font-size: 1.05rem !important;
-    font-family: monospace !important; /* 💡 ボタンの文字も等幅サイバーフォントへ！ */
-    /* background、color、borderの固定指定を完全撤去しました！ */
-    border-radius: 4px !important;
-    cursor: pointer !important;
-    z-index: 1000 !important; 
+    font-family: monospace !important;
+    /* JSから送られてくる青や緑のcolor/borderをそのまま透過させて美しく発色させます */
 }
 
-/* 💥 SFバッド専用：赤点滅アラーム時（.alarm-bg）の電脳エラー再起動ボタン！ */
+/* 💥 世界線③：SFバッド時（.alarm-bg）の電脳エラー再起動ボタンデザイン（赤ネオン） */
+#game-container.alarm-bg #start-btn,
 #game-container.alarm-bg .start-button {
-    position: absolute !important;
-    top: 62% !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important; 
-    width: auto !important;
-    min-width: 160px !important; 
-    padding: 14px 45px !important; 
-    font-size: 1.05rem !important;
-    font-family: monospace !important; 
+    font-family: monospace !important;
     background: rgba(40, 0, 0, 0.8) !important; 
     color: #ef4444 !important; 
     border: 1px solid #ef4444 !important; 
-    border-radius: 4px !important;
-    cursor: pointer !important;
     box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2) !important;
-    z-index: 1000 !important; 
 }
